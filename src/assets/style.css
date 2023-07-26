@@ -1,0 +1,96 @@
+header {
+  background: #ED7200;
+  height: 70px;
+  border-radius: 0 0 20% 20%;
+  overflow: hidden;
+  /* Đảm bảo phần dưới vòng cung không bị che chắn bởi nội dung header */
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+  /* Tùy chỉnh các giá trị theo ý muốn */
+}
+
+.damsen {
+  color: var(--w, #FFF);
+  font-family: iCiel Koni;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+/* Đảm bảo container có thuộc tính position relative */
+.svg-container {
+  position: relative;
+}
+
+/* Điều chỉnh vị trí của SVG con */
+.svg-container svg:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Điều chỉnh vị trí của SVG con */
+.svg-container svg:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  /* Để nằm giữa chiều rộng của container */
+  transform: translateX(-50%);
+  /* Để căn giữa SVG theo chiều ngang */
+}
+
+/* CSS */
+.form-container {
+  position: absolute;
+  top: 220px;
+  /* Adjust the value to move the Form up or down */
+  left: 335px;
+  /* Position the Form in the center horizontally */
+  transform: translateX(-50%);
+  /* Center the Form horizontally */
+}
+
+.ip {
+
+  border-radius: 16px;
+  background: var(--w, #FFF);
+
+  /* inner shadow */
+  box-shadow: -1px 3px 3px 0px rgba(178, 91, 11, 0.50) inset;
+}
+
+/* styles.css */
+
+/* Chỉnh kích thước của Button và hình ảnh */
+.button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  /* căn giữa theo chiều ngang */
+  align-items: center;
+  /* căn giữa theo chiều dọc */
+}
+
+/* Chỉnh kích thước của hình ảnh */
+.button img {
+  width: 200px;
+}
+
+.custom-button {
+  box-shadow: 0 8px 20px #BD000B;
+  /* Hiệu ứng shadow phía dưới */
+  border: none;
+  /* Loại bỏ viền */
+}
+
+
+/* Định nghĩa quy tắc khi nút được hover (được di chuột vào) */
+.custom-buttonn:hover {
+  border: 2px solid white;
+  /* Độ dày của viền là 2px, màu là trắng */
+  background-color: white;
+  /* Khi hover, đổi màu nền thành trắng */
+  color: #FF000A;
+  /* Khi hover, đổi màu chữ thành đỏ (#FF000A) */
+  border-radius: 200px;
+}
