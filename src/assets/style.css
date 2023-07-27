@@ -20,7 +20,6 @@ header {
 .svg-container {
   position: relative;
 }
-
 /* Điều chỉnh vị trí của SVG con */
 .svg-container svg:nth-child(1) {
   position: absolute;
@@ -37,7 +36,6 @@ header {
   transform: translateX(-50%);
   /* Để căn giữa SVG theo chiều ngang */
 }
-
 /* CSS */
 .form-container {
   position: absolute;
@@ -50,15 +48,21 @@ header {
 }
 
 .ip {
-
   border-radius: 16px;
   background: var(--w, #FFF);
-
   /* inner shadow */
   box-shadow: -1px 3px 3px 0px rgba(178, 91, 11, 0.50) inset;
 }
-
-/* styles.css */
+.custom-dropdown .ant-select-selector {
+  height: 40px !important;
+  border-radius: 16px;
+  background: var(--w, #FFF);
+  /* inner shadow */
+  box-shadow: -1px 3px 3px 0px rgba(178, 91, 11, 0.50) inset;
+}
+.custom-dropdown .ant-select-selector .ant-select-selection-item {
+  padding-top: 5px;
+}
 
 /* Chỉnh kích thước của Button và hình ảnh */
 .button {
@@ -83,7 +87,6 @@ header {
   /* Loại bỏ viền */
 }
 
-
 /* Định nghĩa quy tắc khi nút được hover (được di chuột vào) */
 .custom-buttonn:hover {
   border: 2px solid white;
@@ -94,3 +97,4 @@ header {
   /* Khi hover, đổi màu chữ thành đỏ (#FF000A) */
   border-radius: 200px;
 }
+

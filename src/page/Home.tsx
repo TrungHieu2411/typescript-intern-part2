@@ -1,49 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/style.css";
-import { Button, Col, Form, Input, Row, Select } from "antd";
+import { Button, Form, Input, Select } from "antd";
+import Header from "../components/Header";
+
 function Home() {
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleButtonClick = () => {
+    setShowOptions(!showOptions);
+  };
+
+  const handleOptionSelect = (value: any) => {
+    setSelectedOption(value);
+    setShowOptions(false);
+  };
+//-----------
+
   return (
     <div style={{ background: "#FF7F0E" }}>
-      <header style={{ background: "#ED7200", color: "white" }}>
-      <div className="container">
-      <div className="row align-items-center">
-        <div className="col-4 ms-5 ps-5">
-          <img
-            src="../image/Little&LittleLogo.png"
-            alt=""
-            style={{ width: 125 }}
-            className="mt-1"
-          />
-        </div>
-        <div className="col mt-3">
-          <Button className="custom-buttonn me-3 fw-bold" type="text" style={{ color: "white" }}>
-            Trang chủ
-          </Button>
-        
-          <Button className="custom-buttonn mx-5 fw-bold" type="text" style={{ color: "white" }}>
-            Sự kiện
-          </Button>
-      
-          <Button className="custom-buttonn ms-3 fw-bold" type="text" style={{ color: "white" }}>
-            Liên hệ
-          </Button>
-        </div>
-        <div className="col-3 me-5 pe-5 mt-1">
-          <label className="d-flex align-items-center justify-content-center mt-3">
-            <img
-              src="../image/phone.png"
-              alt=""
-              className="me-2"
-              style={{ width: 20 }}
-            />{" "}
-           <small>
-           03955838434
-           </small>
-          </label>
-        </div>
-      </div>
-    </div>
-      </header>
+      <Header/>
       <div style={{ height: 668 }}>
         <div className="container">
           <div className="row">
@@ -390,19 +366,6 @@ function Home() {
                     </foreignObject>
                   </svg>
                 </foreignObject>
-                <div className="container">
-                  <div className="row">
-                    <div className="col-12">
-                      <Form>
-                        <Form.Item label="Select">
-                          <Select>
-                            <Select.Option value="demo">Demo</Select.Option>
-                          </Select>
-                        </Form.Item>
-                      </Form>
-                    </div>
-                  </div>
-                </div>
                 {/* //-----------  */}
                 {/* //----  */}
                 <foreignObject x="135" y="250" width="930" height="600">
@@ -493,15 +456,29 @@ function Home() {
               <div className="form-container">
                 <div className="row">
                   <div className="col ms-2">
-                    <Input
-                      className="ip"
-                      type="text"
+                    <Select
+                      className="ip custom-dropdown"
                       style={{ width: 270, height: 40 }}
-                      placeholder="Gói gia đình"
-                    />
+                      value={selectedOption}
+                      open={showOptions}
+                      onSelect={handleOptionSelect}
+                    >
+                      <Select.Option value="family" className="ip">
+                        Gói gia đình
+                      </Select.Option>
+                      <Select.Option value="couple" className="ip">
+                        Gói cặp đôi
+                      </Select.Option>
+                    </Select>
                   </div>
                   <div className="col p-0">
-                    <Button className="d-flex text-center button" style={{ width: 40, height: 40, background: "#FFDE32" }}><img src="../image/ArrowDown.png"/></Button>
+                    <Button
+                      className="d-flex text-center button"
+                      style={{ width: 40, height: 40, background: "#FFDE32" }}
+                      onClick={handleButtonClick}
+                    >
+                      <img src="../image/ArrowDown.png" alt="ArrowDown" />
+                    </Button>
                   </div>
                 </div>
                 <div className="row mt-3">
@@ -522,7 +499,12 @@ function Home() {
                     />
                   </div>
                   <div className="col p-0 ">
-                    <Button className="d-flex text-center button" style={{ width: 40, height: 40, background: "#FFDE32"  }}><img src="../image/calendar.png"/></Button>
+                    <Button
+                      className="d-flex text-center button"
+                      style={{ width: 40, height: 40, background: "#FFDE32" }}
+                    >
+                      <img src="../image/calendar.png" />
+                    </Button>
                   </div>
                 </div>
                 <div className="row">
@@ -557,7 +539,8 @@ function Home() {
                 </div>
                 <div className="row">
                   <div className="col ms-2 my-3 text-center">
-                    <Button className="custom-button"
+                    <Button
+                      className="custom-button"
                       style={{ width: 250, height: 50, background: "#FF000A" }}
                     >
                       <span className="fw-bold fs-4 text-white">Đặt vé</span>
