@@ -1,13 +1,14 @@
 import { Button } from 'antd'
+import { url } from 'inspector'
 import React from 'react'
 
 function Header() {
   return (
     <>
-      <header style={{ background: "#ED7200", color: "white" }}>
+      <header className="headerMain shadow-lg" style={{  color: "white" }}>
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-4 ms-5 ps-5">
+            <div className="col-4 " style={{marginLeft: 60}}>
               <img
                 src="../image/Little&LittleLogo.png"
                 alt=""
@@ -20,6 +21,7 @@ function Header() {
                 className="custom-buttonn me-3 fw-bold"
                 type="text"
                 style={{ color: "white" }}
+                href='/home'
               >
                 Trang chủ
               </Button>
@@ -28,6 +30,7 @@ function Header() {
                 className="custom-buttonn mx-5 fw-bold"
                 type="text"
                 style={{ color: "white" }}
+                href='/event'
               >
                 Sự kiện
               </Button>
@@ -36,6 +39,7 @@ function Header() {
                 className="custom-buttonn ms-3 fw-bold"
                 type="text"
                 style={{ color: "white" }}
+                href='/contact'
               >
                 Liên hệ
               </Button>

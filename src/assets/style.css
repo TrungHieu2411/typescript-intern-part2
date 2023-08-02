@@ -1,13 +1,3 @@
-header {
-  background: #ED7200;
-  height: 70px;
-  border-radius: 0 0 20% 20%;
-  overflow: hidden;
-  /* Đảm bảo phần dưới vòng cung không bị che chắn bởi nội dung header */
-  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
-  /* Tùy chỉnh các giá trị theo ý muốn */
-}
-
 .damsen {
   color: var(--w, #FFF);
   font-family: iCiel Koni;
@@ -16,50 +6,22 @@ header {
   font-weight: 900;
 }
 
-/* Đảm bảo container có thuộc tính position relative */
-.svg-container {
-  position: relative;
-}
-/* Điều chỉnh vị trí của SVG con */
-.svg-container svg:nth-child(1) {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-/* Điều chỉnh vị trí của SVG con */
-.svg-container svg:nth-child(2) {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  /* Để nằm giữa chiều rộng của container */
-  transform: translateX(-50%);
-  /* Để căn giữa SVG theo chiều ngang */
-}
-/* CSS */
-.form-container {
-  position: absolute;
-  top: 220px;
-  /* Adjust the value to move the Form up or down */
-  left: 335px;
-  /* Position the Form in the center horizontally */
-  transform: translateX(-50%);
-  /* Center the Form horizontally */
-}
-
 .ip {
-  border-radius: 16px;
+  border-radius: 10px;
   background: var(--w, #FFF);
   /* inner shadow */
   box-shadow: -1px 3px 3px 0px rgba(178, 91, 11, 0.50) inset;
+
 }
+
 .custom-dropdown .ant-select-selector {
   height: 40px !important;
-  border-radius: 16px;
+  border-radius: 10px;
   background: var(--w, #FFF);
   /* inner shadow */
   box-shadow: -1px 3px 3px 0px rgba(178, 91, 11, 0.50) inset;
 }
+
 .custom-dropdown .ant-select-selector .ant-select-selection-item {
   padding-top: 5px;
 }
@@ -67,34 +29,573 @@ header {
 /* Chỉnh kích thước của Button và hình ảnh */
 .button {
   width: 40px;
-  height: 40px;
   display: flex;
   justify-content: center;
-  /* căn giữa theo chiều ngang */
   align-items: center;
-  /* căn giữa theo chiều dọc */
-}
-
-/* Chỉnh kích thước của hình ảnh */
-.button img {
   width: 200px;
+  box-shadow: 0px 5px #FFBE5C;
 }
 
 .custom-button {
-  box-shadow: 0 8px 20px #BD000B;
-  /* Hiệu ứng shadow phía dưới */
+  box-shadow: 0px 5px #BD000B;
   border: none;
-  /* Loại bỏ viền */
 }
 
 /* Định nghĩa quy tắc khi nút được hover (được di chuột vào) */
 .custom-buttonn:hover {
   border: 2px solid white;
-  /* Độ dày của viền là 2px, màu là trắng */
   background-color: white;
-  /* Khi hover, đổi màu nền thành trắng */
   color: #FF000A;
-  /* Khi hover, đổi màu chữ thành đỏ (#FF000A) */
   border-radius: 200px;
 }
 
+/* //------HOME---------  */
+.bg {
+  background-image: url("../assets/image/bg.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  margin-top: -50px !important;
+  position: relative;
+  height: 750px;
+}
+
+.headerMain {
+  background-image: url("../assets/image/header.png");
+  background-size: cover;
+  background-position: center;
+  height: 80px;
+  border-radius: 0 0 30% 30%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0);
+}
+
+/* style.css */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.imgLisa {
+  position: absolute;
+  bottom: -20px;
+  left: -10px;
+}
+
+.imgFixhair {
+  position: absolute;
+  top: 65px;
+  right: 80px;
+}
+
+.img18455 {
+  position: absolute;
+  bottom: -20px;
+  right: 32px;
+}
+
+.img18456 {
+  position: absolute;
+  top: 310px;
+  right: -12px;
+}
+
+.img18454 {
+  position: absolute;
+  bottom: -39px;
+  left: 470px;
+}
+
+.img18453 {
+  position: absolute;
+  top: 260px;
+  left: 10px;
+}
+
+.img18452 {
+  position: absolute;
+  top: 145px;
+  left: 650px;
+}
+
+.img18451 {
+  position: absolute;
+  top: 105px;
+  right: 520px;
+}
+
+.imgDamsen {
+  position: absolute;
+  top: 140px;
+  left: 140px;
+}
+
+.titleDamsen {
+  position: absolute;
+  top: 135px;
+  left: 270px;
+}
+
+.imgCardLeft {
+  position: absolute;
+  bottom: 60px;
+  left: 120px;
+}
+
+.imgCardLeft2 {
+  position: absolute;
+  bottom: 70px;
+  left: 120px;
+}
+
+.imgCardLeft3 {
+  position: absolute;
+  bottom: 80px;
+  left: 130px;
+}
+
+.imgCardLeft4 {
+  position: absolute;
+  bottom: 83px;
+  left: 135px;
+}
+
+/* CSS */
+.form-containerRight {
+  position: absolute;
+  top: 310px;
+  right: 155px;
+}
+
+.imgCardRight {
+  position: absolute;
+  bottom: 60px;
+  right: 118px;
+}
+
+.imgCardRight2 {
+  position: absolute;
+  bottom: 70px;
+  right: 119px;
+}
+
+.imgCardRight3 {
+  position: absolute;
+  bottom: 80px;
+  right: 130px;
+}
+
+.imgCardRight4 {
+  position: absolute;
+  bottom: 83px;
+  right: 135px;
+}
+
+.imgCardRightTitle {
+  position: absolute;
+  top: 250px;
+  right: 220px;
+}
+
+.imgCardRightTitle2 {
+  position: absolute;
+  top: 252px;
+  right: 222px;
+}
+
+.titleCardRight {
+  position: absolute;
+  top: 262px;
+  right: 275px;
+}
+
+.pageCardLeft {
+  position: absolute;
+  top: 300px;
+  left: 180px;
+}
+
+.imgCardCenter {
+  position: absolute;
+  bottom: 70px;
+  right: 444px;
+}
+
+/* //------EVENT---------  */
+.bgLeftEvent {
+  position: absolute;
+  top: 80px;
+  left: 0px;
+}
+
+.bgRightEvent {
+  position: absolute;
+  top: 60px;
+  right: -12px;
+}
+
+.titleEvent {
+  position: absolute;
+  top: 155px;
+  left: 490px;
+}
+
+.cardEvent {
+  position: absolute;
+  top: 35%;
+  left: 45px;
+}
+
+/* //------EVENT-DETAIL--------  */
+.titleEventDetail {
+  position: absolute;
+  top: 155px;
+  left: 600px;
+}
+
+.cardEventDetail {
+  position: absolute;
+  top: 260px;
+  left: 155px;
+}
+
+.cardEventDetail2 {
+  position: absolute;
+  top: 260px;
+  left: 155px;
+}
+
+.cardEventDetail3 {
+  position: absolute;
+  top: 265px;
+  left: 160px;
+}
+
+/* //------CONTACT--------  */
+.titleContact {
+  position: absolute;
+  top: 155px;
+  left: 630px;
+}
+
+.cardContact {
+  position: absolute;
+  top: 260px;
+  left: 190px;
+}
+
+.cardContact2 {
+  position: absolute;
+  top: 260px;
+  left: 190px;
+}
+
+.cardContact3 {
+  position: absolute;
+  top: 265px;
+
+  left: 195px;
+}
+
+.cardContact4 {
+  position: absolute;
+  top: 268px;
+
+  left: 198px;
+}
+
+.pageCardContact {
+  position: absolute;
+  top: 268px;
+
+  left: 188px;
+}
+
+/* //-------------  */
+.cardContactRightOne {
+  position: absolute;
+  top: 270px;
+
+  right: 80px;
+}
+
+.cardContactRightOne2 {
+  position: absolute;
+  top: 260px;
+
+  right: 80px;
+}
+
+.cardContactRightOne3 {
+  position: absolute;
+  top: 265px;
+
+  right: 85px;
+}
+
+.cardContactRightOne4 {
+  position: absolute;
+  top: 268px;
+
+  right: 88px;
+}
+
+.pageCardContactRightOne {
+  position: absolute;
+  top: 250px;
+
+  right: 110px;
+}
+
+.waze {
+  position: absolute;
+  top: 20px;
+
+  right: 265px;
+}
+
+.vector {
+  position: absolute;
+  top: 55px;
+
+  right: 265px;
+}
+
+/* //-------------  */
+.cardContactRightTwo {
+  position: absolute;
+  top: 410px;
+
+  right: 80px;
+}
+
+.cardContactRightTwo2 {
+  position: absolute;
+  top: 400px;
+
+  right: 80px;
+}
+
+.cardContactRightTwo3 {
+  position: absolute;
+  top: 405px;
+
+  right: 85px;
+}
+
+.cardContactRightTwo4 {
+  position: absolute;
+  top: 407px;
+
+  right: 88px;
+}
+
+.pageCardContactRightTwo {
+  position: absolute;
+  top: 370px;
+
+  right: 110px;
+}
+
+.mail {
+  position: absolute;
+  top: 65px;
+
+  right: 265px;
+}
+
+/* //-------------  */
+.cardContactRightThree {
+  position: absolute;
+  top: 555px;
+
+  right: 80px;
+}
+
+.cardContactRightThree2 {
+  position: absolute;
+  top: 545px;
+
+  right: 80px;
+}
+
+.cardContactRightThree3 {
+  position: absolute;
+  top: 550px;
+
+  right: 85px;
+}
+
+.cardContactRightThree4 {
+  position: absolute;
+  top: 553px;
+
+  right: 88px;
+}
+
+.pageCardContactRightThree {
+  position: absolute;
+  top: 550px;
+
+  right: 110px;
+}
+
+.telephone {
+  position: absolute;
+  top: 15px;
+
+  right: 265px;
+}
+
+/* //--------  */
+.imgAlex {
+  position: absolute;
+  bottom: 70px;
+  left: -5px;
+}
+
+/* //------------PAYSTORE---------------- */
+
+.imgPayStoreRight {
+  position: absolute;
+  top: 250px;
+  right: 175px;
+}
+
+.imgPayStoreRight2 {
+  position: absolute;
+  top: 252px;
+  right: 178px;
+}
+
+.titlePayStoreRight {
+  position: absolute;
+  top: 262px;
+  right: 220px;
+}
+
+.titlePayStore {
+  position: absolute;
+  top: 155px;
+  left: 550px;
+}
+
+.containerRightPayStore {
+  position: absolute;
+  top: 300px;
+  /* Adjust the value to move the Form up or down */
+  right: 50px;
+}
+
+.titlePayStoreLeft {
+  position: absolute;
+  top: 260px;
+  left: 270px;
+}
+
+.imgPayStoreLeft {
+  position: absolute;
+  top: 250px;
+  left: 220px;
+}
+
+.imgPayStoreLeft2 {
+  position: absolute;
+  top: 252px;
+  left: 222px;
+}
+
+.pageCardLeftPayStore {
+  position: absolute;
+  top: 300px;
+  left: 230px;
+}
+
+.triniArnold {
+  position: absolute;
+  top: 305px;
+  left: 0px;
+}
+
+/* //---------COMPLETE PAYSTORE---------  */
+
+.titleCompele {
+  position: absolute;
+  top: 155px;
+
+  left: 385px;
+}
+
+
+.cardComplete {
+  position: absolute;
+  bottom: 60px;
+
+  right: 108px;
+
+}
+
+.cardComplete2 {
+  position: absolute;
+  bottom: 70px;
+
+  right: 108px;
+
+}
+
+.cardComplete3 {
+  position: absolute;
+  bottom: 75px;
+
+  right: 115px;
+
+}
+
+.cardComplete4 {
+  position: absolute;
+  bottom: 80px;
+  right: 120px;
+}
+
+.buttonComplete {
+  position: absolute;
+  bottom: 20px;
+  right: 590px;
+}
+
+.alvinArnold {
+  position: absolute;
+  top: 285px;
+  left: 0px;
+}
+
+.cardCompletePayStore {
+  position: absolute;
+  top: 38%;
+  left: 250px;
+}
+
+.textPay {
+  font-weight: bold;
+  color: #FFC226;
+}
+
+.tick {
+  width: 40px;
+}
+
+.titleTicket {
+  position: absolute;
+  bottom: 90px;
+  left: 345px;
+}
+
+.titleTicket2 {
+  position: absolute;
+  bottom: 90px;
+  right: 220px;
+  opacity: 0.2;
+}

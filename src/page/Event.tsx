@@ -18,266 +18,183 @@ function Event() {
   //-----------
 
   return (
-    <div style={{ background: "#FF7F0E" }}>
+    <div style={{ background: "#FF7F0E", height: 789 }}>
       <Header />
-      <div>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              {/* /// svg one  */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1784 957"
-                fill="none"
-              >
-                <path
-                  opacity="0.4"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M657.307 0.521423C657.307 0.521423 755.512 831.147 1783.68 957.442H-6.75937V0.521423H657.307Z"
-                  fill="#FFC500"
+      <div className="row bg">
+        <div>
+          <h1
+            className="titleEvent text-white fw-bold"
+            style={{ fontSize: 70 }}
+          >
+            Sự kiện nổi bật
+          </h1>
+        </div>
+
+        <img className="bgEvent px-5" src="../image/event/eventBg.png" alt="" />
+        <img
+          className="bgLeftEvent"
+          src="../image/event/leftEvent.png"
+          alt=""
+          style={{ width: 380, height: 200 }}
+        />
+        <img
+          className="bgRightEvent"
+          src="../image/event/rightEvent.png"
+          alt=""
+          style={{ width: 400, height: 220 }}
+        />
+        <div>
+          <div className="row cardEvent px-5">
+            <Button
+              className="d-flex button btn me-2"
+              style={{ width: 40, height: 40, background: "#FFDE32", marginTop: 165 }}
+              onClick={handleButtonClick}
+            >
+              <img src="../image/event/arrowLeft.png" alt="ArrowDown" />
+            </Button>
+            <div className="col">
+              <div className="card" style={{ width: 275, height: 380, borderRadius: 20 }}>
+                <img
+                  src="../image/event/rectangle.png"
+                  className="card-img-top"
+                  alt="..."
+                  style={{borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
                 />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_194_191"
-                    x1="888.457"
-                    y1="957.433"
-                    x2="888.457"
-                    y2="0.51264"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset="0.0171" stop-color="#FF8B2C" />
-                    <stop offset="0.0422" stop-color="#FF8D2A" />
-                    <stop offset="0.3782" stop-color="#FFA413" />
-                    <stop offset="0.6939" stop-color="#FFB105" />
-                    <stop offset="0.9665" stop-color="#FFB600" />
-                  </linearGradient>
-                </defs>
-
-                {/* //-----------  */}
-                <foreignObject
-                  x="300"
-                  y="-10"
-                  width="1500"
-                  height="1000"
-                  className="svg-container"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 907 1000"
-                    fill="none"
-                  >
-                    <path
-                      opacity="0.4"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M453.111 4.48305C453.111 4.48305 436.657 822.803 0.0631714 957.423H906.678V0.502258L453.111 4.48305Z"
-                      fill="#FFC500"
-                    />
-                    <defs>
-                      <linearGradient
-                        id="paint0_linear_194_192"
-                        x1="453.361"
-                        y1="957.433"
-                        x2="453.361"
-                        y2="0.512639"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop offset="0.0171" stop-color="#FFA12C" />
-                        <stop offset="0.9665" stop-color="#FFC500" />
-                      </linearGradient>
-                    </defs>
-                    {/* //-----------  */}
-                  </svg>
-                </foreignObject>
-
-                {/* //-----------  */}
-                <foreignObject x="50" y="280" width="1700" height="700">
-                  <div className="row mx-2">
-                    <div className="col">
-                      <div className="card" style={{ width: 370, height: 500 }}>
-                        <img
-                          src="../image/Rectangle.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Sự kiện 1</h3>
-                          <span className="card-text">Đầm sen Park</span>
-                          <div className="d-flex my-2 pb-2">
-                            <img src="../image/calendar2.png" alt="" />
-                            <span>30/05/2022 - 02/06/2022</span>
-                          </div>
-                          <h2 style={{ color: "#FA7D09", fontWeight: "bold" }}>
-                            <span>25.000</span> VNĐ
-                          </h2>
-
-                          <Button
-                            href="#"
-                            className="custom-button"
-                            style={{
-                              width: 200,
-                              height: 40,
-                              background: "#FF000A",
-                            }}
-                          >
-                            <span className="fw-bold fs-5 text-white">
-                              Xem chi tiết
-                            </span>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col">
-                      <div className="card" style={{ width: 370, height: 500 }}>
-                        <img
-                          src="../image/Rectangle3.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Sự kiện 1</h3>
-                          <span className="card-text">Đầm sen Park</span>
-                          <div className="d-flex my-2 pb-2">
-                            <img src="../image/calendar2.png" alt="" />
-                            <span>30/05/2022 - 02/06/2022</span>
-                          </div>
-                          <h2 style={{ color: "#FA7D09", fontWeight: "bold" }}>
-                            <span>25.000</span> VNĐ
-                          </h2>
-
-                          <Button
-                            href="/event/detail"
-                            className="custom-button"
-                            style={{
-                              width: 200,
-                              height: 40,
-                              background: "#FF000A",
-                            }}
-                          >
-                            <span className="fw-bold fs-5 text-white">
-                              Xem chi tiết
-                            </span>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col">
-                      <div className="card" style={{ width: 370, height: 500 }}>
-                        <img
-                          src="../image/Rectangle.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Sự kiện 1</h3>
-                          <span className="card-text">Đầm sen Park</span>
-                          <div className="d-flex my-2 pb-2">
-                            <img src="../image/calendar2.png" alt="" />
-                            <span>30/05/2022 - 02/06/2022</span>
-                          </div>
-                          <h2 style={{ color: "#FA7D09", fontWeight: "bold" }}>
-                            <span>25.000</span> VNĐ
-                          </h2>
-
-                          <Button
-                            href="/event/detail"
-                            className="custom-button"
-                            style={{
-                              width: 200,
-                              height: 40,
-                              background: "#FF000A",
-                            }}
-                          >
-                            <span className="fw-bold fs-5 text-white">
-                              Xem chi tiết
-                            </span>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col">
-                      <div className="card" style={{ width: 370, height: 500 }}>
-                        <img
-                          src="../image/Rectangle2.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Sự kiện 1</h3>
-                          <span className="card-text">Đầm sen Park</span>
-                          <div className="d-flex my-2 pb-2">
-                            <img src="../image/calendar2.png" alt="" />
-                            <span>30/05/2022 - 02/06/2022</span>
-                          </div>
-                          <h2 style={{ color: "#FA7D09", fontWeight: "bold" }}>
-                            <span>25.000</span> VNĐ
-                          </h2>
-                          <Button
-                            href="/event/detail"
-                            className="custom-button"
-                            style={{
-                              width: 200,
-                              height: 40,
-                              background: "#FF000A",
-                            }}
-                          >
-                            <span className="fw-bold fs-5 text-white">
-                              Xem chi tiết
-                            </span>
-                          </Button>
-                        </div>
-                      </div>
-                    
-                    </div>
-                    
+                <div className="card-body">
+                  <h5 className="card-title">Sự kiện 1</h5>
+                  <span className="card-text">Đầm sen Park</span>
+                  <div className="d-flex align-items-center my-1 pb-2">
+                    <img src="../image/event/calendar2.png" alt="" />
+                    <span style={{ fontSize: 12 }} className="ps-1">
+                      30/05/2022 - 02/06/2022
+                    </span>
                   </div>
-                </foreignObject>
-
-               
-                <foreignObject x="0" y="0" width="1500" height="500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="483"
-                  height="174"
-                  viewBox="0 0 483 174"
-                  fill="none"
-                >
-                  <path
-                    d="M203.349 134.592C99.2989 169.68 -10.2619 180.898 -122.271 167.931L-122.062 166.166C103.383 192.26 317.76 119.96 481.575 -37.4292L482.797 -36.142C401.406 42.0438 307.377 99.4863 203.349 134.592Z"
-                    fill="#474747"
-                  />
-                </svg>
-                </foreignObject>
-                <foreignObject
-                  x="550"
-                  y="50"
-                  width="1500"
-                  height="500"
-                  className="svg-container"
-                >
-                  <div className="row">
-                    <div className="col d-flex align-items-center">
-                      <h1 style={{ fontSize: 100, color: "white", fontWeight: "bold" }}>Sự kiện nổi bật</h1>
-                    </div>
-                  </div>
-                </foreignObject>
-                <foreignObject x="1260" y="0" width="1500" height="500">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="524"
-                    height="246"
-                    viewBox="0 0 524 246"
-                    fill="none"
+                  <h5 style={{ color: "#FA7D09", fontWeight: "bold" }}>
+                    <span>25.000</span> VNĐ
+                  </h5>
+                  <Button
+                    href="#"
+                    className="custom-button"
+                    style={{
+                      width: 120,
+                      height: 25,
+                      background: "#FF000A",
+                    }}
                   >
-                    <path
-                      d="M246.521 185.104C152.604 143.245 69.9813 81.5198 0.956968 1.61337L2.21072 0.529817C141.136 161.361 334.644 247.556 547.055 243.27L547.088 244.928C441.553 247.061 340.421 226.939 246.521 185.104Z"
-                      fill="#474747"
-                    />
-                  </svg>
-                </foreignObject>
-              </svg>
+                    <span className="fw-bold text-white">Xem chi tiết</span>
+                  </Button>
+                </div>
+              </div>
             </div>
+            <div className="col">
+              <div className="card" style={{ width: 275, height: 380, borderRadius: 20}}>
+                <img
+                  src="../image/event/rectangle2.png"
+                  className="card-img-top"
+                  alt="..."
+                  style={{borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Sự kiện 1</h5>
+                  <span className="card-text">Đầm sen Park</span>
+                  <div className="d-flex align-items-center my-1 pb-2">
+                    <img src="../image/event/calendar2.png" alt="" />
+                    <span style={{ fontSize: 12 }} className="ps-1">
+                      30/05/2022 - 02/06/2022
+                    </span>
+                  </div>
+                  <h5 style={{ color: "#FA7D09", fontWeight: "bold" }}>
+                    <span>25.000</span> VNĐ
+                  </h5>
+                  <Button
+                    href="#"
+                    className="custom-button"
+                    style={{
+                      width: 120,
+                      height: 25,
+                      background: "#FF000A",
+                    }}
+                  >
+                    <span className="fw-bold text-white">Xem chi tiết</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="card" style={{ width: 275, height: 380, borderRadius: 20}}>
+                <img
+                  src="../image/event/rectangle.png"
+                  className="card-img-top"
+                  alt="..."
+                  style={{borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Sự kiện 1</h5>
+                  <span className="card-text">Đầm sen Park</span>
+                  <div className="d-flex align-items-center my-1 pb-2">
+                    <img src="../image/event/calendar2.png" alt="" />
+                    <span style={{ fontSize: 12 }} className="ps-1">
+                      30/05/2022 - 02/06/2022
+                    </span>
+                  </div>
+                  <h5 style={{ color: "#FA7D09", fontWeight: "bold" }}>
+                    <span>25.000</span> VNĐ
+                  </h5>
+                  <Button
+                    href="#"
+                    className="custom-button"
+                    style={{
+                      width: 120,
+                      height: 25,
+                      background: "#FF000A",
+                    }}
+                  >
+                    <span className="fw-bold text-white">Xem chi tiết</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="card" style={{ width: 275, height: 380, borderRadius: 20 }}>
+                <img
+                  src="../image/event/rectangle.png"
+                  className="card-img-top"
+                  alt="..."
+                  style={{borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Sự kiện 1</h5>
+                  <span className="card-text">Đầm sen Park</span>
+                  <div className="d-flex align-items-center my-1 pb-2">
+                    <img src="../image/event/calendar2.png" alt="" />
+                    <span style={{ fontSize: 12 }} className="ps-1">
+                      30/05/2022 - 02/06/2022
+                    </span>
+                  </div>
+                  <h5 style={{ color: "#FA7D09", fontWeight: "bold" }}>
+                    <span>25.000</span> VNĐ
+                  </h5>
+                  <Button
+                    href="/event/detail"
+                    className="custom-button"
+                    style={{
+                      width: 120,
+                      height: 25,
+                      background: "#FF000A",
+                    }}
+                  >
+                    <span className="fw-bold text-white">Xem chi tiết</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <Button
+              className="d-flex button btn ms-2"
+              style={{ width: 40, height: 40, background: "#FFDE32",  marginTop: 165 }}
+              onClick={handleButtonClick}
+            >
+              <img src="../image/event/arrowRight.png" alt="ArrowDown" />
+            </Button>
           </div>
         </div>
       </div>
