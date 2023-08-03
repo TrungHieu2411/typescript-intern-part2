@@ -10,7 +10,7 @@ function Header() {
           <div className="row align-items-center">
             <div className="col-4 " style={{marginLeft: 60}}>
               <img
-                src="../image/Little&LittleLogo.png"
+                src="../image/header/Little&LittleLogo.png"
                 alt=""
                 style={{ width: 125 }}
                 className="mt-1"
@@ -47,7 +47,7 @@ function Header() {
             <div className="col-3 me-5 pe-5 mt-1">
               <label className="d-flex align-items-center justify-content-center mt-3">
                 <img
-                  src="../image/phone.png"
+                  src="../image/header/phone.png"
                   alt=""
                   className="me-2"
                   style={{ width: 20 }}

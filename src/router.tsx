@@ -16,7 +16,7 @@ const Router = () => {
         <Route path="/event" element={<Event />} />
         <Route path="/event/detail" element={<DetailEvent />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/paystore" element={<PayStore />} />
+        <Route path="/paystore/:id" element={<PayStore />} />
         <Route path="/paystore/complete" element={<CompletePayStore />} />
       </Routes>
     </>

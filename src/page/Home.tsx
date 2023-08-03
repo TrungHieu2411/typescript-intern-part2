@@ -2,36 +2,80 @@ import React, { useState } from "react";
 import "../assets/style.css";
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import Header from "../components/Header";
+import { useDispatch } from "react-redux";
+import { createTicket } from "../redux/ticket/ticketSlice";
+import dayjs from "dayjs";
+import { firestore } from "../firebase/firebaseConfig";
+
+interface TicketData {
+  typeTicker: string;
+  money: string;
+  quantity: string;
+  date: any;
+  fullname: string;
+  phoneNumber: string;
+  email: string;
+}
 
 function Home() {
+  const [ticker, setTicker] = useState<TicketData>({
+    typeTicker: "",
+    quantity: "",
+    date: null, // Initialize date as null
+    money: "",
+    fullname: "",
+    phoneNumber: "",
+    email: "",
+  });
   const [showOptions, setShowOptions] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-
+  const [showDates, setShowDates] = useState(false);
+  const [money, setMoney] = useState("");
+  
   const handleButtonClick = () => {
     setShowOptions(!showOptions);
   };
-
-  const handleOptionSelect = (value: any) => {
-    setSelectedOption(value);
-    setShowOptions(false);
-  };
-
-  //-----------
-  const [showDates, setShowDates] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
 
   const handleButtonClickDate = () => {
     setShowDates(!showDates);
   };
 
-  const handleDateChange = (date: any) => {
-    setSelectedDate(date);
+  const handleDateChange = (value: any) => {
     setShowDates(false);
+    setTicker({
+      ...ticker,
+      date: value,
+    });
   };
-  //-----------
 
+  const handleOptionSelect = (value: string) => {
+    setTicker({
+      ...ticker,
+      typeTicker: value,
+    });
+
+    // Set the money value based on the selected typeTicker
+    if (value === "family") {
+      setMoney("350.000");
+    } else if (value === "couple") {
+      setMoney("200.000");
+    }
+    setShowOptions(false);
+  };
+
+  const dispatch = useDispatch();
+  const onFinish = async () => {
+    const formattedDate = dayjs(ticker.date).format("DD/MM/YYYY");
+    const ticketWithFormattedDate = {
+      ...ticker,
+      date: formattedDate,
+      money: money,
+    };
+    await dispatch(createTicket(ticketWithFormattedDate) as any);
+  };
+
+  const [form] = Form.useForm();
   return (
-    <div style={{ background: "#FF7F0E", height: 789 }}>
+    <div style={{ background: "#FF7F0E", height: 793 }}>
       <Header />
       <div className="row bg" style={{ height: 750 }}>
         <img
@@ -85,104 +129,178 @@ function Home() {
 
         <div>
           <div className="form-containerRight">
-            <div className="row">
-              <div className="col ms-2">
-                <Select
-                  className="ip custom-dropdown"
-                  style={{ width: 270, height: 40 }}
-                  value={selectedOption}
-                  open={showOptions}
-                  onSelect={handleOptionSelect}
-                  placeholder="Chọn gói sử dụng"
-                >
-                  <Select.Option value="family" className="ip">
-                    Gói gia đình
-                  </Select.Option>
-                  <Select.Option value="couple" className="ip">
-                    Gói cặp đôi
-                  </Select.Option>
-                </Select>
+            <Form form={form} onFinish={onFinish}>
+              <div className="row tickerForm">
+                <div className="col ms-2">
+                  <Form.Item
+                    name="typeTicker"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Vui lòng chọn gói",
+                      },
+                    ]}
+                  >
+                    <Select
+                      className="ip custom-dropdown"
+                      style={{ width: 270, height: 40 }}
+                      open={showOptions}
+                      onSelect={handleOptionSelect}
+                      value={ticker.typeTicker}
+                      onChange={(value) =>
+                        setTicker({
+                          ...ticker,
+                          typeTicker: value,
+                        })
+                      }
+                      placeholder="Chọn gói sử dụng"
+                    >
+                      <Select.Option value="family" className="ip">
+                        Gói gia đình
+                      </Select.Option>
+                      <Select.Option value="couple" className="ip">
+                        Gói cặp đôi
+                      </Select.Option>
+                    </Select>
+                  </Form.Item>
+                </div>
+                <div className="col p-0">
+                  <Button
+                    className="d-flex text-center button"
+                    style={{ width: 40, height: 40, background: "#FFDE32" }}
+                    onClick={handleButtonClick}
+                  >
+                    <img src="../image/home/arrowDown.png" alt="ArrowDown" />
+                  </Button>
+                </div>
               </div>
-              <div className="col p-0">
-                <Button
-                  className="d-flex text-center button"
-                  style={{ width: 40, height: 40, background: "#FFDE32" }}
-                  onClick={handleButtonClick}
-                >
-                  <img src="../image/home/arrowDown.png" alt="ArrowDown" />
-                </Button>
+              <div className="row tickerForm">
+                <div className="col ms-2">
+                  <Form.Item name="quantity">
+                    <Input
+                      value={ticker.quantity}
+                      onChange={(e) =>
+                        setTicker({
+                          ...ticker,
+                          quantity: e.target.value,
+                        })
+                      }
+                    required
+                      className="ip"
+                      style={{ width: 100, height: 40 }}
+                      placeholder="Số lượng vé"
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col ps-0">
+                  <Form.Item
+                    name="date"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Vui lòng chọn ngày",
+                      },
+                    ]}
+                  >
+                    <DatePicker
+                      className="ip"
+                      open={showDates}
+                      onSelect={handleDateChange}
+                      style={{ width: 158, height: 40 }}
+                      placeholder="Ngày sử dụng"
+                      value={ticker.date}
+                      onChange={(value) =>
+                        setTicker({
+                          ...ticker,
+                          date: value,
+                        })
+                      }
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col p-0">
+                  <Form.Item>
+                    <Button
+                      className="d-flex text-center button"
+                      style={{ width: 40, height: 40, background: "#FFDE32" }}
+                      onClick={handleButtonClickDate}
+                    >
+                      <img src="../image/home/calendar.png" alt="Calendar" />
+                    </Button>
+                  </Form.Item>
+                </div>
               </div>
-            </div>
-            <div className="row mt-3">
-              <div className="col ms-2">
-                <Input
-                  className="ip"
-                  type="text"
-                  style={{ width: 100, height: 40 }}
-                  placeholder="Số lượng vé"
-                />
+              <div className="row tickerForm">
+                <div className="col ms-2">
+                  <Form.Item name="fulname">
+                    <Input
+                      value={ticker.fullname}
+                      onChange={(e) =>
+                        setTicker({
+                          ...ticker,
+                          fullname: e.target.value,
+                        })
+                      }
+                    required
+                      className="ip"
+                      style={{ width: 322, height: 40 }}
+                      placeholder="Họ và tên"
+                    />
+                  </Form.Item>
+                </div>
               </div>
-              <div className="col ps-0">
-                <DatePicker
-                  value={selectedDate}
-                  open={showDates}
-                  onSelect={handleDateChange}
-                  onChange={handleDateChange}
-                  style={{ width: 158, height: 40 }}
-                  placeholder="Ngày sử dụng"
-                />
+              <div className="row tickerForm">
+                <div className="col ms-2">
+                  <Form.Item name="phoneNumber">
+                    <Input
+                      value={ticker.phoneNumber}
+                      onChange={(e) =>
+                        setTicker({
+                          ...ticker,
+                          phoneNumber: e.target.value,
+                        })
+                      }
+                    required
+                      className="ip"
+                      style={{ width: 322, height: 40 }}
+                      placeholder="Số điện thoại"
+                    />
+                  </Form.Item>
+                </div>
               </div>
-              <div className="col p-0">
-                <Button
-                  className="d-flex text-center button"
-                  style={{ width: 40, height: 40, background: "#FFDE32" }}
-                  onClick={handleButtonClickDate}
-                >
-                  <img src="../image/home/calendar.png" alt="Calendar" />
-                </Button>
+              <div className="row tickerForm">
+                <div className="col ms-2">
+                  <Form.Item name="email">
+                    <Input
+                      value={ticker.email}
+                      onChange={(e) =>
+                        setTicker({
+                          ...ticker,
+                          email: e.target.value,
+                        })
+                      }
+                    required
+                      className="ip"
+                      style={{ width: 322, height: 40 }}
+                      placeholder="Địa chỉ email"
+                    />
+                  </Form.Item>
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="col ms-2 mt-3">
-                <Input
-                  className="ip"
-                  type="text"
-                  style={{ width: 322, height: 40 }}
-                  placeholder="Họ và tên"
-                />
+              <div className="row mt-1">
+                <div className="col ms-2 text-center">
+                  <Form.Item>
+                    <Button
+                      htmlType="submit"
+                      className="custom-button"
+                      style={{ width: 250, height: 40, background: "#FF000A" }}
+                    >
+                      <span className="fw-bold fs-4 text-white">Đặt vé</span>
+                    </Button>
+                  </Form.Item>
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="col ms-2 mt-3">
-                <Input
-                  className="ip"
-                  type="text"
-                  style={{ width: 322, height: 40 }}
-                  placeholder="Số điện thoại"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col ms-2 mt-3">
-                <Input
-                  className="ip"
-                  type="text"
-                  style={{ width: 322, height: 40 }}
-                  placeholder="Địa chỉ email"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col ms-2 my-3 text-center">
-                <Button
-                  href="/paystore"
-                  className="custom-button"
-                  style={{ width: 250, height: 40, background: "#FF000A" }}
-                >
-                  <span className="fw-bold fs-4 text-white">Đặt vé</span>
-                </Button>
-              </div>
-            </div>
+            </Form>
           </div>
         </div>
         <div>

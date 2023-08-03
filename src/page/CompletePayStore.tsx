@@ -18,7 +18,7 @@ function CompletePayStore() {
   //-----------
 
   return (
-    <div style={{ background: "#FF7F0E", height: 789 }}>
+    <div style={{ background: "#FF7F0E", height: 793 }}>
       <Header />
       <div className="row bg">
         <div>
@@ -32,31 +32,31 @@ function CompletePayStore() {
         <img
           className="cardComplete"
           style={{ width: 1100, height: 420 }}
-          src="../image/cardComplete.png"
+          src="../image/completePayStore/cardComplete.png"
           alt=""
         />
         <img
           className="cardComplete2"
           style={{ width: 1100, height: 420 }}
-          src="../image/cardComplete2.png"
+          src="../image/completePayStore/cardComplete2.png"
           alt=""
         />
         <img
           className="cardComplete3"
           style={{ width: 1085, height: 410 }}
-          src="../image/cardComplete3.png"
+          src="../image/completePayStore/cardComplete3.png"
           alt=""
         />
         <img
           className="cardComplete4"
           style={{ width: 1075, height: 400 }}
-          src="../image/cardComplete4.png"
+          src="../image/completePayStore/cardComplete4.png"
           alt=""
         />
         <img
           className="alvinArnold"
           style={{ width: 270, height: 410 }}
-          src="../image/alvin_Arnold.png"
+          src="../image/completePayStore/alvin_Arnold.png"
           alt=""
         />
         <div>
@@ -93,7 +93,7 @@ function CompletePayStore() {
             <div className="col">
               <div className="card" style={{ width: 200, height: 330, borderRadius: 10 }}>
                 <img
-                  src="../image/qr.png"
+                  src="../image/completePayStore/qr.png"
                   className="card-img-top pt-4 px-5"
                   alt="..."
                 />
@@ -108,7 +108,7 @@ function CompletePayStore() {
                   <p style={{fontSize: 10}}>
                     <span>Ngày sử dụng: 31/05/2021</span>
                   </p>
-                 <img src="../image/tick.png" className="tick" alt="" />
+                 <img src="../image/completePayStore/tick.png" className="tick" alt="" />
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ function CompletePayStore() {
             <div className="col">
               <div className="card" style={{ width: 200, height: 330, borderRadius: 10 }}>
                 <img
-                  src="../image/qr.png"
+                  src="../image/completePayStore/qr.png"
                   className="card-img-top pt-4 px-5"
                   alt="..."
                 />
@@ -131,14 +131,14 @@ function CompletePayStore() {
                   <p style={{fontSize: 10}}>
                     <span>Ngày sử dụng: 31/05/2021</span>
                   </p>
-                 <img src="../image/tick.png" className="tick" alt="" />
+                 <img src="../image/completePayStore/tick.png" className="tick" alt="" />
                 </div>
               </div>
             </div>
             <div className="col">
               <div className="card" style={{ width: 200, height: 330, borderRadius: 10 }}>
                 <img
-                  src="../image/qr.png"
+                  src="../image/completePayStore/qr.png"
                   className="card-img-top pt-4 px-5"
                   alt="..."
                 />
@@ -153,14 +153,14 @@ function CompletePayStore() {
                   <p style={{fontSize: 10}}>
                     <span>Ngày sử dụng: 31/05/2021</span>
                   </p>
-                 <img src="../image/tick.png" className="tick" alt="" />
+                 <img src="../image/completePayStore/tick.png" className="tick" alt="" />
                 </div>
               </div>
             </div>
             <div className="col">
               <div className="card" style={{ width: 200, height: 330, borderRadius: 10 }}>
                 <img
-                  src="../image/qr.png"
+                  src="../image/completePayStore/qr.png"
                   className="card-img-top pt-4 px-5"
                   alt="..."
                 />
@@ -175,7 +175,7 @@ function CompletePayStore() {
                   <p style={{fontSize: 10}}>
                     <span>Ngày sử dụng: 31/05/2021</span>
                   </p>
-                 <img src="../image/tick.png" className="tick" alt="" />
+                 <img src="../image/completePayStore/tick.png" className="tick" alt="" />
                 </div>
               </div>
             </div>

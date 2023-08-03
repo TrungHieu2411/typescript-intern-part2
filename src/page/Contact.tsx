@@ -4,7 +4,7 @@ import { Button, Form, Input, Modal } from "antd";
 import Header from "../components/Header";
 import TextArea from "antd/es/input/TextArea";
 
-interface FormData {
+interface ContactData {
   name: string;
   email: string;
   phoneNumber: string;
@@ -13,7 +13,7 @@ interface FormData {
 }
 
 function Contact() {
-  const [contact, setContact] = useState<FormData>({
+  const [contact, setContact] = useState<ContactData>({
     name: "",
     email: "",
     phoneNumber: "",

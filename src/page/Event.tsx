@@ -4,21 +4,8 @@ import { Button, Form, Input, Select } from "antd";
 import Header from "../components/Header";
 
 function Event() {
-  const [showOptions, setShowOptions] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleButtonClick = () => {
-    setShowOptions(!showOptions);
-  };
-
-  const handleOptionSelect = (value: any) => {
-    setSelectedOption(value);
-    setShowOptions(false);
-  };
-  //-----------
-
   return (
-    <div style={{ background: "#FF7F0E", height: 789 }}>
+    <div style={{ background: "#FF7F0E", height: 793 }}>
       <Header />
       <div className="row bg">
         <div>
@@ -48,7 +35,6 @@ function Event() {
             <Button
               className="d-flex button btn me-2"
               style={{ width: 40, height: 40, background: "#FFDE32", marginTop: 165 }}
-              onClick={handleButtonClick}
             >
               <img src="../image/event/arrowLeft.png" alt="ArrowDown" />
             </Button>
@@ -191,7 +177,6 @@ function Event() {
             <Button
               className="d-flex button btn ms-2"
               style={{ width: 40, height: 40, background: "#FFDE32",  marginTop: 165 }}
-              onClick={handleButtonClick}
             >
               <img src="../image/event/arrowRight.png" alt="ArrowDown" />
             </Button>

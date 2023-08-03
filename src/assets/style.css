@@ -170,6 +170,10 @@ header {
   right: 155px;
 }
 
+.tickerForm {
+  margin-bottom: -5px;
+}
+
 .imgCardRight {
   position: absolute;
   bottom: 60px;
@@ -514,6 +518,10 @@ header {
   left: 230px;
 }
 
+.payStoreForm {
+  margin-bottom: -15px;
+}
+
 .triniArnold {
   position: absolute;
   top: 305px;
@@ -572,6 +580,8 @@ header {
   left: 0px;
 }
 
+
+/* //-----  */
 .cardCompletePayStore {
   position: absolute;
   top: 38%;
@@ -599,3 +609,4 @@ header {
   right: 220px;
   opacity: 0.2;
 }
+

@@ -18,7 +18,7 @@ function DetailEvent() {
   //-----------
 
   return (
-    <div style={{ background: "#FF7F0E", height: 789 }}>
+    <div style={{ background: "#FF7F0E", height: 793 }}>
       <Header />
       <div className="row bg">
         <div>
