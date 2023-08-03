@@ -87,12 +87,12 @@ function Event() {
               </div>
             </div>
             <div className="col">
-              <div className="card" style={{ width: 275, height: 380, borderRadius: 20}}>
+              <div className="card" style={{ width: 275, height: 380, borderRadius: 10}}>
                 <img
                   src="../image/event/rectangle2.png"
                   className="card-img-top"
                   alt="..."
-                  style={{borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+                  style={{borderTopLeftRadius: 10, borderTopRightRadius: 10}}
                 />
                 <div className="card-body">
                   <h5 className="card-title">Sự kiện 1</h5>
@@ -121,12 +121,12 @@ function Event() {
               </div>
             </div>
             <div className="col">
-              <div className="card" style={{ width: 275, height: 380, borderRadius: 20}}>
+              <div className="card" style={{ width: 275, height: 380, borderRadius: 10}}>
                 <img
                   src="../image/event/rectangle.png"
                   className="card-img-top"
                   alt="..."
-                  style={{borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+                  style={{borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                 />
                 <div className="card-body">
                   <h5 className="card-title">Sự kiện 1</h5>
@@ -155,12 +155,12 @@ function Event() {
               </div>
             </div>
             <div className="col">
-              <div className="card" style={{ width: 275, height: 380, borderRadius: 20 }}>
+              <div className="card" style={{ width: 275, height: 380, borderRadius: 10 }}>
                 <img
                   src="../image/event/rectangle.png"
                   className="card-img-top"
                   alt="..."
-                  style={{borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+                  style={{borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                 />
                 <div className="card-body">
                   <h5 className="card-title">Sự kiện 1</h5>

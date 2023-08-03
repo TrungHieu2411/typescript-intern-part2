@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../assets/style.css";
-import { Button, Form, Input, Select } from "antd";
+import { Button, DatePicker, Form, Input, Select } from "antd";
 import Header from "../components/Header";
 
 function Home() {
@@ -14,6 +14,19 @@ function Home() {
   const handleOptionSelect = (value: any) => {
     setSelectedOption(value);
     setShowOptions(false);
+  };
+
+  //-----------
+  const [showDates, setShowDates] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleButtonClickDate = () => {
+    setShowDates(!showDates);
+  };
+
+  const handleDateChange = (date: any) => {
+    setSelectedDate(date);
+    setShowDates(false);
   };
   //-----------
 
@@ -69,7 +82,7 @@ function Home() {
           src="../image/home/cardRightTitle2.png"
           alt=""
         />
-        
+
         <div>
           <div className="form-containerRight">
             <div className="row">
@@ -110,19 +123,22 @@ function Home() {
                 />
               </div>
               <div className="col ps-0">
-                <Input
-                  className="ip"
-                  type="text"
+                <DatePicker
+                  value={selectedDate}
+                  open={showDates}
+                  onSelect={handleDateChange}
+                  onChange={handleDateChange}
                   style={{ width: 158, height: 40 }}
                   placeholder="Ngày sử dụng"
                 />
               </div>
-              <div className="col p-0 ">
+              <div className="col p-0">
                 <Button
                   className="d-flex text-center button"
                   style={{ width: 40, height: 40, background: "#FFDE32" }}
+                  onClick={handleButtonClickDate}
                 >
-                  <img src="../image/home/calendar.png" />
+                  <img src="../image/home/calendar.png" alt="Calendar" />
                 </Button>
               </div>
             </div>
@@ -278,7 +294,7 @@ function Home() {
           alt=""
           style={{ width: 140, height: 220 }}
         />
-        
+
         <div>
           <img
             className="imgDamsen"
@@ -286,7 +302,10 @@ function Home() {
             alt=""
             style={{ width: 110, height: 95 }}
           />
-          <h1 className="titleDamsen fw-bold text-white" style={{ width: 250, fontSize: 50 }}>
+          <h1
+            className="titleDamsen fw-bold text-white"
+            style={{ width: 250, fontSize: 50 }}
+          >
             Đầm Sen Park
           </h1>
         </div>
