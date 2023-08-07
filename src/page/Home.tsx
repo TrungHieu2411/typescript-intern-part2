@@ -27,10 +27,9 @@ function Home() {
     phoneNumber: "",
     email: "",
   });
+  //-----------
   const [showOptions, setShowOptions] = useState(false);
-  const [showDates, setShowDates] = useState(false);
-  const [money, setMoney] = useState("");
-  
+
   const handleButtonClick = () => {
     setShowOptions(!showOptions);
   };
@@ -38,6 +37,9 @@ function Home() {
   const handleButtonClickDate = () => {
     setShowDates(!showDates);
   };
+  //---------
+  const [showDates, setShowDates] = useState(false);
+  const [money, setMoney] = useState("");
 
   const handleDateChange = (value: any) => {
     setShowDates(false);
@@ -61,7 +63,7 @@ function Home() {
     }
     setShowOptions(false);
   };
-
+  //---GỌI API
   const dispatch = useDispatch();
   const onFinish = async () => {
     const formattedDate = dayjs(ticker.date).format("DD/MM/YYYY");
@@ -74,8 +76,9 @@ function Home() {
   };
 
   const [form] = Form.useForm();
+  //-------
   return (
-    <div style={{ background: "#FF7F0E", height: 793 }}>
+    <div style={{ background: "#FF7F0E", height: 782 }}>
       <Header />
       <div className="row bg" style={{ height: 750 }}>
         <img
@@ -137,7 +140,7 @@ function Home() {
                     rules={[
                       {
                         required: true,
-                        message: "Vui lòng chọn gói",
+                        message: "",
                       },
                     ]}
                   >
@@ -176,7 +179,15 @@ function Home() {
               </div>
               <div className="row tickerForm">
                 <div className="col ms-2">
-                  <Form.Item name="quantity">
+                  <Form.Item
+                    name="quantity"
+                    rules={[
+                      {
+                        required: true,
+                        message: "",
+                      },
+                    ]}
+                  >
                     <Input
                       value={ticker.quantity}
                       onChange={(e) =>
@@ -185,10 +196,12 @@ function Home() {
                           quantity: e.target.value,
                         })
                       }
-                    required
+                      type="number"
                       className="ip"
                       style={{ width: 100, height: 40 }}
                       placeholder="Số lượng vé"
+                      min={1}
+                      max={99}
                     />
                   </Form.Item>
                 </div>
@@ -198,7 +211,7 @@ function Home() {
                     rules={[
                       {
                         required: true,
-                        message: "Vui lòng chọn ngày",
+                        message: "",
                       },
                     ]}
                   >
@@ -232,7 +245,15 @@ function Home() {
               </div>
               <div className="row tickerForm">
                 <div className="col ms-2">
-                  <Form.Item name="fulname">
+                  <Form.Item
+                    name="fulname"
+                    rules={[
+                      {
+                        required: true,
+                        message: "",
+                      },
+                    ]}
+                  >
                     <Input
                       value={ticker.fullname}
                       onChange={(e) =>
@@ -241,7 +262,6 @@ function Home() {
                           fullname: e.target.value,
                         })
                       }
-                    required
                       className="ip"
                       style={{ width: 322, height: 40 }}
                       placeholder="Họ và tên"
@@ -251,7 +271,15 @@ function Home() {
               </div>
               <div className="row tickerForm">
                 <div className="col ms-2">
-                  <Form.Item name="phoneNumber">
+                  <Form.Item
+                    name="phoneNumber"
+                    rules={[
+                      {
+                        required: true,
+                        message: "",
+                      },
+                    ]}
+                  >
                     <Input
                       value={ticker.phoneNumber}
                       onChange={(e) =>
@@ -260,7 +288,6 @@ function Home() {
                           phoneNumber: e.target.value,
                         })
                       }
-                    required
                       className="ip"
                       style={{ width: 322, height: 40 }}
                       placeholder="Số điện thoại"
@@ -270,7 +297,15 @@ function Home() {
               </div>
               <div className="row tickerForm">
                 <div className="col ms-2">
-                  <Form.Item name="email">
+                  <Form.Item
+                    name="email"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Vui lòng nhập đầy đủ thông tin",
+                      },
+                    ]}
+                  >
                     <Input
                       value={ticker.email}
                       onChange={(e) =>
@@ -279,7 +314,6 @@ function Home() {
                           email: e.target.value,
                         })
                       }
-                    required
                       className="ip"
                       style={{ width: 322, height: 40 }}
                       placeholder="Địa chỉ email"
@@ -295,7 +329,9 @@ function Home() {
                       className="custom-button"
                       style={{ width: 250, height: 40, background: "#FF000A" }}
                     >
-                      <span className="fw-bold fs-4 text-white">Đặt vé</span>
+                      <span className="fw-bold fs-5 text-white titleButtonCardRight">
+                        Đặt vé
+                      </span>
                     </Button>
                   </Form.Item>
                 </div>
@@ -311,7 +347,7 @@ function Home() {
           className="img18454"
           src="../image/home/18454.png"
           alt=""
-          style={{ width: 125, height: 130 }}
+          style={{ width: 110, height: 120 }}
         />
 
         <img
@@ -328,31 +364,31 @@ function Home() {
         />
         <img
           className="imgCardLeft"
-          style={{ width: 800, height: 420 }}
+          style={{ width: 780, height: 420 }}
           src="../image/home/cardLeft.png"
           alt=""
         />
         <img
           className="imgCardLeft2"
-          style={{ width: 800, height: 420 }}
+          style={{ width: 780, height: 420 }}
           src="../image/home/cardLeft2.png"
           alt=""
         />
         <img
           className="imgCardLeft3"
-          style={{ width: 780, height: 400 }}
+          style={{ width: 765, height: 400 }}
           src="../image/home/cardLeft3.png"
           alt=""
         />
         <img
           className="imgCardLeft4"
-          style={{ width: 770, height: 395 }}
+          style={{ width: 755, height: 395 }}
           src="../image/home/cardLeft4.png"
           alt=""
         />
 
         <div>
-          <p className="pageCardLeft" style={{ width: 700 }}>
+          <p className="pageCardLeft" style={{ width: 650 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             ac mollis justo. Etiam volutpat tellus quis risus volutpat, ut
             posuere ex facilisis.

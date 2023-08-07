@@ -88,6 +88,9 @@ export const updateTicket =
           ...ticket,
         });
       dispatch(getTicket());
+
+      // Thực hiện chuyển hướng sau khi cập nhật thành công
+      window.location.href = `/paystore/complete/${id}`;
     } catch (error) {
       console.log(error);
     }

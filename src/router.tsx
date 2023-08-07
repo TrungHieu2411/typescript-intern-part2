@@ -14,10 +14,10 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/event" element={<Event />} />
-        <Route path="/event/detail" element={<DetailEvent />} />
+        <Route path="/event/detail/:id" element={<DetailEvent />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/paystore/:id" element={<PayStore />} />
-        <Route path="/paystore/complete" element={<CompletePayStore />} />
+        <Route path="/paystore/complete/:id" element={<CompletePayStore />} />
       </Routes>
     </>
   );

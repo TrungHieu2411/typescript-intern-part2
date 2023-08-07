@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../assets/style.css";
-import { Button, DatePicker, Form, Input, Select } from "antd";
+import { Button, Card, DatePicker, Form, Input, Modal, Select } from "antd";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import { firestore } from "../firebase/firebaseConfig";
@@ -25,7 +25,20 @@ interface PayStoreData {
 }
 
 function PayStore() {
-  //-----------
+  const [payStore, setPayStore] = useState<PayStoreData>({
+    id: "",
+    money: "",
+    quantity: "",
+    date: null,
+    fullname: "",
+    phoneNumber: "",
+    email: "",
+    cardinalNumber: "",
+    nameCardinalNumber: "",
+    dateLine: null,
+    cvvAndCvc: "",
+  });
+  //--------NGÀY THÁNG NĂM---
   const [showDates, setShowDates] = useState(false);
 
   const handleButtonClickDate = () => {
@@ -40,7 +53,7 @@ function PayStore() {
     });
   };
 
-  //-------------
+  //--------GỌI API-----
 
   const { id } = useParams<{ id: string }>();
 
@@ -57,44 +70,56 @@ function PayStore() {
   }, [id]);
   //-------------
 
-  const [payStore, setPayStore] = useState<PayStoreData>({
-    id: "",
-    money: "",
-    quantity: "",
-    date: null,
-    fullname: "",
-    phoneNumber: "",
-    email: "",
-    cardinalNumber: "",
-    nameCardinalNumber: "",
-    dateLine: null,
-    cvvAndCvc: "",
-  });
-
-  const [form] = Form.useForm();
-
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>();
-  const handleUpdateTicket = async () => {
+  const onFinish = async () => {
     if (typeof id === "string") {
       try {
-        const formattedDate = dayjs(payStore.dateLine).format("DD/MM/YYYY");
-        const payStoreWithFormattedDate = {
-          ...payStore,
-          dateLine: formattedDate,
-        };
-        await dispatch(updateTicket(id, payStoreWithFormattedDate));
-        console.log("Service updated successfully!");
-        
-        // Thực hiện chuyển hướng sau khi cập nhật thành công
-        window.location.href = "/paystore/complete";
+        // Check if the cardinalNumber contains characters (letters)
+        if (isNaN(parseFloat(payStore.cardinalNumber))) {
+          // If it contains characters, show the modal
+          handleOpenModal();
+        } else {
+          // If it's a number, proceed with the dispatch
+          const formattedDate = dayjs(payStore.dateLine).format("DD/MM/YYYY");
+          const payStoreWithFormattedDate = {
+            ...payStore,
+            dateLine: formattedDate,
+          };
+          await dispatch(updateTicket(id, payStoreWithFormattedDate));
+          console.log("Service updated successfully!");
+        }
       } catch (error) {
         console.error("Error updating service:", error);
       }
     }
   };
 
+  const [form] = Form.useForm();
+  //------TỔNG TIỀN THANH TOÁN--------
+  const calculatePaymentAmount = () => {
+    const quantity = parseFloat(payStore.quantity);
+    const money = parseFloat(payStore.money);
+    return isNaN(quantity) || isNaN(money)
+      ? ""
+      : (quantity * money).toString() + ".000 VNĐ";
+  };
+  //-----ẨN HIỆN MODAL------------
+  const [visible, setVisible] = useState(false);
+
+  const handleCloseModal = () => {
+    setVisible(false);
+  };
+  //Nhập cả chữ lẫn số------
+  const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+
+  const handleOpenModal = () => {
+    //sai nên hiển thị modal, đúng thì không hiển thị
+    if (!alphanumericRegex.test(payStore.cardinalNumber)) {
+      setVisible(true);
+    }
+  };
   return (
-    <div style={{ background: "#FF7F0E", height: 793 }}>
+    <div style={{ background: "#FF7F0E", height: 795 }}>
       <Header />
       <div className="row bg" style={{ height: 750 }}>
         <div>
@@ -142,10 +167,9 @@ function PayStore() {
           src="../image/payStore/payStoreRight2.png"
           alt=""
         />
-
         <div>
           <div className="containerRightPayStore">
-            <Form form={form}>
+            <Form form={form} onFinish={onFinish}>
               <div className="row payStoreForm">
                 <div className="col-12">
                   <label className="fw-bold" htmlFor="">
@@ -153,11 +177,18 @@ function PayStore() {
                   </label>
                 </div>
                 <div className="col-12">
-                  <Form.Item>
+                  <Form.Item
+                    name="cardinalNumber"
+                    rules={[
+                      {
+                        required: true,
+                        message: "",
+                      },
+                    ]}
+                  >
                     <Input
                       className="ip"
                       type="text"
-                      required
                       style={{ width: 285, height: 40 }}
                       placeholder="Nhập số thẻ"
                       value={payStore.cardinalNumber}
@@ -167,6 +198,7 @@ function PayStore() {
                           cardinalNumber: e.target.value,
                         })
                       }
+                      maxLength={10}
                     />
                   </Form.Item>
                 </div>
@@ -178,11 +210,18 @@ function PayStore() {
                   </label>
                 </div>
                 <div className="col-12">
-                  <Form.Item>
+                  <Form.Item
+                    name="nameCardinalNumber"
+                    rules={[
+                      {
+                        required: true,
+                        message: "",
+                      },
+                    ]}
+                  >
                     <Input
                       className="ip"
                       type="text"
-                      required
                       style={{ width: 285, height: 40 }}
                       placeholder="Nhập họ và tên chủ thẻ"
                       value={payStore.nameCardinalNumber}
@@ -208,7 +247,7 @@ function PayStore() {
                     rules={[
                       {
                         required: true,
-                        message: "Vui lòng chọn ngày",
+                        message: "",
                       },
                     ]}
                   >
@@ -247,11 +286,18 @@ function PayStore() {
                   </label>
                 </div>
                 <div className="col">
-                  <Form.Item name="cvvAndCvc">
+                  <Form.Item
+                    name="cvvAndCvc"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Vui lòng nhập đầy đủ thông tin",
+                      },
+                    ]}
+                  >
                     <Input.Password
                       className="ip"
                       type="text"
-                      required
                       style={{ width: 80, height: 40 }}
                       placeholder="CVV/CVC"
                       value={payStore.cvvAndCvc}
@@ -269,17 +315,48 @@ function PayStore() {
                 <div className="col ms-3 mt-3">
                   <Button
                     htmlType="submit"
-                    onClick={handleUpdateTicket}
                     className="custom-button"
                     style={{ width: 250, height: 40, background: "#FF000A" }}
                   >
-                    <span className="fw-bold fs-4 text-white">Thanh toán</span>
+                    <span className="fw-bold fs-5 text-white titlePayStoreRight2">
+                      Thanh toán
+                    </span>
                   </Button>
                 </div>
               </div>
             </Form>
           </div>
         </div>
+        {visible && (
+          <Modal
+            style={{ paddingRight: 120, paddingLeft: 120 }}
+            visible={visible}
+            onCancel={handleCloseModal}
+            footer={null} // Để loại bỏ footer, nếu không cần
+            centered
+            className="modalEmoji"
+          >
+            <h2
+              style={{
+                padding: 25,
+                borderTopLeftRadius: 32,
+                borderTopRightRadius: 32,
+                backgroundColor: "#FF8B15",
+              }}
+            >
+              <img
+                src="../image/completePayStore/sadEmoji.png"
+                style={{ width: 80 }}
+                className="emoji"
+                alt=""
+              />
+            </h2>
+            <p className="pb-3 pt-2 px-3 ms-3" style={{ fontSize: 13 }}>
+              Hình như đã có lỗi xảy ra khi thanh toán... <br />
+              Vui lòng kiểm tra lại thông tin liên hệ, thông tin thẻ và thử lại.
+            </p>
+          </Modal>
+        )}
         <div>
           <h6 className="titlePayStoreRight text-white fw-bold">
             THÔNG TIN THANH TOÁN
@@ -288,25 +365,25 @@ function PayStore() {
 
         <img
           className="imgCardLeft"
-          style={{ width: 800, height: 420 }}
+          style={{ width: 765, height: 420 }}
           src="../image/home/cardLeft.png"
           alt=""
         />
         <img
           className="imgCardLeft2"
-          style={{ width: 800, height: 420 }}
+          style={{ width: 765, height: 420 }}
           src="../image/home/cardLeft2.png"
           alt=""
         />
         <img
           className="imgCardLeft3"
-          style={{ width: 780, height: 400 }}
+          style={{ width: 745, height: 400 }}
           src="../image/home/cardLeft3.png"
           alt=""
         />
         <img
           className="imgCardLeft4"
-          style={{ width: 770, height: 395 }}
+          style={{ width: 735, height: 395 }}
           src="../image/home/cardLeft4.png"
           alt=""
         />
@@ -340,13 +417,7 @@ function PayStore() {
                         className="ip"
                         type="text"
                         style={{ width: 170, height: 40 }}
-                        value={payStore.money}
-                        onChange={(e) =>
-                          setPayStore({
-                            ...payStore,
-                            money: e.target.value,
-                          })
-                        }
+                        value={calculatePaymentAmount()}
                       />
                     </div>
                   </div>

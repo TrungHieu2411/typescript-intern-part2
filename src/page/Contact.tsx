@@ -3,6 +3,8 @@ import "../assets/style.css";
 import { Button, Form, Input, Modal } from "antd";
 import Header from "../components/Header";
 import TextArea from "antd/es/input/TextArea";
+import { useDispatch } from "react-redux";
+import { createContact } from "../redux/contact/contactSlice";
 
 interface ContactData {
   name: string;
@@ -20,41 +22,33 @@ function Contact() {
     address: "",
     message: "",
   });
-  //--------------
-  const [form] = Form.useForm();
-
-  const handleAddContact = () => {
-    // Kiểm tra và submit form
-    form
-      .validateFields()
-      .then(() => {
-        form.submit();
-        handleOpenModal();
-      })
-      .catch((error) => {
-        console.error("Validation failed:", error);
-      });
+  //----------GỌI API------------------
+  const dispatch = useDispatch();
+  const onFinish = async () => {
+    handleOpenModal();
+    await dispatch(createContact(contact) as any);
   };
-//----------
 
-const [visible, setVisible] = useState(false);
+  const [form] = Form.useForm();
+  //------------MODAL ẨN HIỆN----------------
+  const [visible, setVisible] = useState(false);
 
-const handleOpenModal = () => {
-  setVisible(true);
-};
+  const handleOpenModal = () => {
+    setVisible(true);
+  };
 
-const handleCloseModal = () => {
-  setVisible(false);
-};
+  const handleCloseModal = () => {
+    setVisible(false);
+  };
 
   return (
-    <div style={{ background: "#FF7F0E", height: 793 }}>
+    <div style={{ background: "#FF7F0E", height: 782 }}>
       <Header />
       <div className="row bg" style={{ height: 750 }}>
         <div>
           <h1
             className="titleContact text-white fw-bold"
-            style={{ fontSize: 70 }}
+            style={{ fontSize: 80 }}
           >
             Liên hệ
           </h1>
@@ -91,12 +85,16 @@ const handleCloseModal = () => {
         />
         <div>
           <div className="pageCardContact mt-4 ps-2">
-            <p className="ps-5 pe-5" style={{ width: 800 }}>
+            <p className="px-5 me-3" style={{ width: 800 }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse ac mollis justo. Etiam volutpat tellus quis risus
               volutpat, ut posuere ex facilisis.
             </p>
-            <Form className="ms-4 ps-4 pe-5 mx-5" form={form}>
+            <Form
+              className="ms-4 ps-4 pe-5 mx-5"
+              form={form}
+              onFinish={onFinish}
+            >
               <div className="row">
                 <div className="col-5">
                   <Form.Item
@@ -204,6 +202,13 @@ const handleCloseModal = () => {
               <div className="row">
                 <div className="col">
                   <Form.Item
+                    name="message"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Vui lòng nhập lời nhắn!",
+                      },
+                    ]}
                   >
                     <TextArea
                       className="ip"
@@ -227,10 +232,9 @@ const handleCloseModal = () => {
                     <Button
                       className="custom-button"
                       htmlType="submit"
-                      onClick={handleAddContact}
                       style={{ width: 250, height: 40, background: "#FF000A" }}
                     >
-                      <span className="fw-bold fs-4 text-white">
+                      <span className="fw-bold fs-5 text-white buttonContact">
                         Gửi liên hệ
                       </span>
                     </Button>
@@ -240,6 +244,7 @@ const handleCloseModal = () => {
             </Form>
           </div>
         </div>
+
         <Modal
           style={{ paddingRight: 120, paddingLeft: 120 }}
           visible={visible}
@@ -247,7 +252,7 @@ const handleCloseModal = () => {
           footer={null} // Để loại bỏ footer, nếu không cần
           centered
         >
-          <p className="py-3 mb-0">
+          <p className="py-4 px-4 mb-0">
             Gửi liên hệ thành công. <br /> Vui lòng kiên nhẫn đợi phản hồi từ
             chúng tôi, bạn nhé!
           </p>

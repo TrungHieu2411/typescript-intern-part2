@@ -36,16 +36,49 @@
   box-shadow: 0px 5px #FFBE5C;
 }
 
+/* //-----  */
+.buttonLeft {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  box-shadow: 0px 5px #FFBE5C;
+
+  position: absolute;
+  top: 155px;
+  left: -15px;
+}
+
+.buttonRight {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  box-shadow: 0px 5px #FFBE5C;
+
+  position: absolute;
+  top: 155px;
+  right: -20px;
+}
+
+/* //-----  */
 .custom-button {
   box-shadow: 0px 5px #BD000B;
   border: none;
 }
 
 /* Định nghĩa quy tắc khi nút được hover (được di chuột vào) */
-.custom-buttonn:hover {
+.custom-buttonn2 {
   border: 2px solid white;
-  background-color: white;
   color: #FF000A;
+  border-radius: 200px;
+}
+
+.custom-buttonn:hover {
+  /* Thêm quy tắc màu cho lớp custom-buttonn */
+  /* color: white; */
   border-radius: 200px;
 }
 
@@ -65,7 +98,7 @@
   background-image: url("../assets/image/header.png");
   background-size: cover;
   background-position: center;
-  height: 80px;
+  height: 85px;
   border-radius: 0 0 30% 30%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0);
 }
@@ -105,7 +138,7 @@ header {
 
 .img18454 {
   position: absolute;
-  bottom: -39px;
+  bottom: -30px;
   left: 470px;
 }
 
@@ -137,30 +170,31 @@ header {
   position: absolute;
   top: 135px;
   left: 270px;
+  font-family: iCiel Koni;
 }
 
 .imgCardLeft {
   position: absolute;
   bottom: 60px;
-  left: 120px;
+  left: 140px;
 }
 
 .imgCardLeft2 {
   position: absolute;
   bottom: 70px;
-  left: 120px;
+  left: 140px;
 }
 
 .imgCardLeft3 {
   position: absolute;
   bottom: 80px;
-  left: 130px;
+  left: 150px;
 }
 
 .imgCardLeft4 {
   position: absolute;
   bottom: 83px;
-  left: 135px;
+  left: 155px;
 }
 
 /* CSS */
@@ -213,13 +247,19 @@ header {
 .titleCardRight {
   position: absolute;
   top: 262px;
-  right: 275px;
+  right: 278px;
+  font-family: iCiel Koni;
+}
+
+.titleButtonCardRight {
+  font-family: iCiel Koni;
 }
 
 .pageCardLeft {
   position: absolute;
   top: 300px;
-  left: 180px;
+  left: 190px;
+  font-family: Montserrat;
 }
 
 .imgCardCenter {
@@ -243,14 +283,19 @@ header {
 
 .titleEvent {
   position: absolute;
-  top: 155px;
-  left: 490px;
+  top: 145px;
+  left: 430px;
+  font-family: iCiel Koni;
 }
 
 .cardEvent {
   position: absolute;
-  top: 35%;
+  top: 36%;
   left: 45px;
+}
+
+.textDetail {
+  font-family: iCiel Koni;
 }
 
 /* //------EVENT-DETAIL--------  */
@@ -258,6 +303,7 @@ header {
   position: absolute;
   top: 155px;
   left: 600px;
+  font-family: iCiel Koni;
 }
 
 .cardEventDetail {
@@ -281,8 +327,9 @@ header {
 /* //------CONTACT--------  */
 .titleContact {
   position: absolute;
-  top: 155px;
-  left: 630px;
+  top: 140px;
+  left: 580px;
+  font-family: iCiel Koni;
 }
 
 .cardContact {
@@ -314,15 +361,18 @@ header {
 .pageCardContact {
   position: absolute;
   top: 268px;
-
   left: 188px;
+  font-family: Montserrat;
+}
+
+.buttonContact {
+  font-family: iCiel Koni;
 }
 
 /* //-------------  */
 .cardContactRightOne {
   position: absolute;
   top: 270px;
-
   right: 80px;
 }
 
@@ -478,13 +528,19 @@ header {
 .titlePayStoreRight {
   position: absolute;
   top: 262px;
-  right: 220px;
+  right: 225px;
+  font-family: iCiel Koni;
+}
+
+.titlePayStoreRight2 {
+  font-family: iCiel Koni;
 }
 
 .titlePayStore {
   position: absolute;
-  top: 155px;
-  left: 550px;
+  top: 145px;
+  left: 510px;
+  font-family: iCiel Koni;
 }
 
 .containerRightPayStore {
@@ -498,6 +554,7 @@ header {
   position: absolute;
   top: 260px;
   left: 270px;
+  font-family: iCiel Koni;
 }
 
 .imgPayStoreLeft {
@@ -519,7 +576,7 @@ header {
 }
 
 .payStoreForm {
-  margin-bottom: -15px;
+  margin-bottom: -18px;
 }
 
 .triniArnold {
@@ -532,9 +589,9 @@ header {
 
 .titleCompele {
   position: absolute;
-  top: 155px;
-
-  left: 385px;
+  top: 145px;
+  left: 345px;
+  font-family: iCiel Koni;
 }
 
 
@@ -574,6 +631,10 @@ header {
   right: 590px;
 }
 
+.buttonBottomComplete {
+  font-family: iCiel Koni;
+}
+
 .alvinArnold {
   position: absolute;
   top: 285px;
@@ -584,8 +645,8 @@ header {
 /* //-----  */
 .cardCompletePayStore {
   position: absolute;
-  top: 38%;
-  left: 250px;
+  top: 40%;
+  left: 75px;
 }
 
 .textPay {
@@ -594,19 +655,46 @@ header {
 }
 
 .tick {
-  width: 40px;
+  width: 33px;
+  margin-left: 72px;
 }
 
 .titleTicket {
   position: absolute;
   bottom: 90px;
-  left: 345px;
+  left: 325px;
 }
 
 .titleTicket2 {
   position: absolute;
   bottom: 90px;
-  right: 220px;
+  right: 210px;
   opacity: 0.2;
 }
 
+/* //modal contact  */
+.ant-modal-content {
+  padding: 0px !important;
+  border-radius: 32px !important;
+}
+
+.modalEmoji {
+  position: relative;
+}
+
+.emoji {
+  position: absolute;
+  top: -40px;
+  right: 100px;
+}
+
+.canvaQr .card-body {
+  padding-top: 0px !important;
+}
+:where(.css-dev-only-do-not-override-txh9fw).ant-qrcode {
+  border: none;
+}
+.canvaQr canvas {
+  width: 100px !important;
+  height: 100px !important;
+}
