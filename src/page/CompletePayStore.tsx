@@ -94,7 +94,7 @@ function CompletePayStore() {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: +payStore.quantity > 4 ? 4 : +payStore.quantity,
     slidesToScroll: 4,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
