@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { firestore } from "../firebase/firebaseConfig";
 import jsPDF from "jspdf";
 import emailjs from "emailjs-com";
+
 function SampleNextArrow(props: any) {
   const { onClick } = props;
   return (
@@ -137,6 +138,7 @@ function CompletePayStore() {
 
     return slides;
   };
+
 //số trang hiển thị -- tính toán dựa vào số vé để nhân ra số lần
   const itemsPerPage = 4;
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -160,14 +162,15 @@ function CompletePayStore() {
       ? ""
       : (quantity * money).toString() + ".000 VND";
   };
+
   //-------XUẤT FILE PDF SỬ DỤNG DỰA VÀO VIỆC SỬ DỤNG THƯ VIỆN jsPDF--------
   const generatePDF = () => {
     const doc = new jsPDF();
-    doc.text("Card Information: ", 15, 10);
-    doc.text(`Money: ${payStore.money}`, 15, 20);
-    doc.text(`Quantity Ticket: ${payStore.quantity}`, 15, 30);
-    doc.text(`Total: ${calculatePaymentAmount()}`, 15, 40);
-    doc.text(`Cardinal Number: ${payStore.cardinalNumber}`, 15, 50);
+    doc.text("Dam Sen Park - THANK YOU!: ", 15, 10);
+    doc.text(`QR Event Information: ${payStore.cardinalNumber}`, 15, 20);
+    doc.text(`Money: ${payStore.money}`, 15, 30);
+    doc.text(`Quantity Ticket: ${payStore.quantity}`, 15, 40);
+    doc.text(`Total: ${calculatePaymentAmount()}`, 15, 50);
     doc.text(`Phone Number: ${payStore.phoneNumber}`, 15, 60);
     doc.text(`Email: ${payStore.email}`, 15, 70);
     doc.text(`Date Line: ${payStore.dateLine}`, 15, 80);

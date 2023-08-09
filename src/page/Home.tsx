@@ -5,7 +5,6 @@ import Header from "../components/Header";
 import { useDispatch } from "react-redux";
 import { createTicket } from "../redux/ticket/ticketSlice";
 import dayjs from "dayjs";
-import { firestore } from "../firebase/firebaseConfig";
 
 interface TicketData {
   typeTicker: string;
