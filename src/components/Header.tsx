@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import Link from "antd/es/typography/Link";
 import { url } from "inspector";
 import React from "react";
 import { useLocation } from "react-router-dom";
@@ -26,12 +27,14 @@ function Header() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-4 " style={{ marginLeft: 60 }}>
+              <Link href="/home">
               <img
                 src="../image/header/Little&LittleLogo.png"
                 alt=""
                 style={{ width: 175 }}
                 className=""
               />
+              </Link>
             </div>
             <div className="col mt-3">
               <Button
