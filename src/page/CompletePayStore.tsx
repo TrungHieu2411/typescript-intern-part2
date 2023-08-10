@@ -139,7 +139,7 @@ function CompletePayStore() {
     return slides;
   };
 
-//số trang hiển thị -- tính toán dựa vào số vé để nhân ra số lần
+  //số trang hiển thị -- tính toán dựa vào số vé để nhân ra số lần
   const itemsPerPage = 4;
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -167,7 +167,7 @@ function CompletePayStore() {
   const generatePDF = () => {
     const doc = new jsPDF();
     doc.text("Dam Sen Park - THANK YOU!: ", 15, 10);
-    doc.text(`QR Event Information: ${payStore.cardinalNumber}`, 15, 20);
+    doc.text(`Event QR Code: ${payStore.cardinalNumber}`, 15, 20);
     doc.text(`Money: ${payStore.money}`, 15, 30);
     doc.text(`Quantity Ticket: ${payStore.quantity}`, 15, 40);
     doc.text(`Total: ${calculatePaymentAmount()}`, 15, 50);
@@ -183,14 +183,16 @@ function CompletePayStore() {
   const handleSendEmailClick = () => {
     const emailParams = {
       to_email: "trunghieu2k350@gmail.com", // Địa chỉ email người nhận
-      from_name: payStore.fullname, // Tên người gửi (có thể để trống)
-      subject: "Đầm sen Park", // Chủ đề email (có thể để trống)
+      from_name: "Đầm sen Park", // Tên người gửi (có thể để trống)
+      subject: "Mã QR cho sự kiện", // Chủ đề email (có thể để trống)
       message: JSON.stringify(
-        `Money: ${payStore.money}, Quantity Ticket: ${
+        `Event QR Code: ${payStore.cardinalNumber}, Money: ${
+          payStore.money
+        }, Quantity Ticket: ${
           payStore.quantity
-        }, Total: ${calculatePaymentAmount()}, Cardinal Number: ${
-          payStore.cardinalNumber
-        }, Phone Number: ${payStore.phoneNumber}, Date Line: ${payStore.dateLine}`
+        }, Total: ${calculatePaymentAmount()}, Phone Number: ${payStore.phoneNumber}, Date Line: ${
+          payStore.dateLine
+        }`
       ),
     };
 
