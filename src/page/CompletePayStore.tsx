@@ -105,8 +105,8 @@ function CompletePayStore() {
   const renderSlides = () => {
     const numSlides = parseInt(payStore.quantity);
     const slides = [];
-
     for (let i = 0; i < numSlides; i++) {
+      const randomTicketString = randomTicketStrings[i];
       slides.push(
         <div className="col" key={i}>
           <div
@@ -117,7 +117,7 @@ function CompletePayStore() {
               <QRCode value={payStore.cardinalNumber || "-"} />
             </Space>
             <div className="card-body text-center">
-              <h5 className="card-title">ALT2021050{i}</h5>
+              <h5 className="card-title">{randomTicketString}</h5>
               <span className="card-text textPay">VÉ CỔNG</span>
               <div className=" ">
                 <span>---</span>
@@ -164,6 +164,29 @@ function CompletePayStore() {
   };
 
   //-------XUẤT FILE PDF SỬ DỤNG DỰA VÀO VIỆC SỬ DỤNG THƯ VIỆN jsPDF--------
+  const generateRandomString = (length: number) => {
+    const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters[randomIndex];
+    }
+    return result;
+  };
+  const [randomTicketStrings, setRandomTicketStrings] = useState<string[]>([]);
+  useEffect(() => {
+    const generateRandomStrings = () => {
+      const numSlides = parseInt(payStore.quantity);
+      const strings = [];
+      for (let i = 0; i < numSlides; i++) {
+        strings.push(generateRandomString(10));
+      }
+      return strings;
+    };
+
+    setRandomTicketStrings(generateRandomStrings());
+  }, [payStore.quantity]);
+
   const generatePDF = () => {
     const doc = new jsPDF();
     doc.text("Dam Sen Park - THANK YOU!: ", 15, 10);
@@ -174,6 +197,10 @@ function CompletePayStore() {
     doc.text(`Phone Number: ${payStore.phoneNumber}`, 15, 60);
     doc.text(`Email: ${payStore.email}`, 15, 70);
     doc.text(`Date Line: ${payStore.dateLine}`, 15, 80);
+   const numSlides = parseInt(payStore.quantity);
+    for (let i = 0; i < numSlides; i++) {
+      doc.text(`Ticket ${i + 1}: ${randomTicketStrings[i]}`, 15, 90 + i * 10);
+    }
     doc.save("card_information.pdf");
   };
   const handleDownloadClick = () => {
@@ -181,18 +208,18 @@ function CompletePayStore() {
   };
   //-------GỬI EMAIL DỰA VÀO VIỆC SỬ DỤNG THƯ VIỆN emailJs--------
   const handleSendEmailClick = () => {
+    const randomTicketStrings = Array.from({ length: parseInt(payStore.quantity) }, () => generateRandomString(10));
     const emailParams = {
-      to_email: "trunghieu2k350@gmail.com", // Địa chỉ email người nhận
+      to_email: `${payStore.email}`, // Địa chỉ email người nhận
       from_name: "Đầm sen Park", // Tên người gửi (có thể để trống)
       subject: "Mã QR cho sự kiện", // Chủ đề email (có thể để trống)
       message: JSON.stringify(
-        `Event QR Code: ${payStore.cardinalNumber}, Money: ${
+        `Dear ${payStore.fullname}, Thank you for pay Ticket!, Money: ${
           payStore.money
-        }, Quantity Ticket: ${
+        } VND, Quantity Ticket: ${
           payStore.quantity
-        }, Total: ${calculatePaymentAmount()}, Phone Number: ${payStore.phoneNumber}, Date Line: ${
-          payStore.dateLine
-        }`
+        } ticket, Total: ${calculatePaymentAmount()}, Date Line: ${payStore.dateLine}, ` +
+        randomTicketStrings.map((ticketString, index) => `Ticket ${index + 1}: ${ticketString}`).join(' - ')
       ),
     };
 

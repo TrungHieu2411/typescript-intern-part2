@@ -68,6 +68,23 @@ function PayStore() {
     };
     fetchPayStore();
   }, [id]);
+
+
+  const numSlides = +payStore.quantity; // Số lượng slides
+  const idLength = 10; // Độ dài của ID
+  const generateRandomID = () => {
+    let id = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < idLength; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      id += characters[randomIndex];
+    }
+    return id;
+  };
+  for (let i = 0; i < numSlides; i++) {
+    const generatedID = generateRandomID();
+  }
+
   //-------------
 
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>();
@@ -118,6 +135,7 @@ function PayStore() {
       setVisible(true);
     }
   };
+
   return (
     <div style={{ background: "#FF7F0E", height: 795 }}>
       <Header />
